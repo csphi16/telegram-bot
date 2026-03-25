@@ -8,6 +8,7 @@ on:
       - '**.md'
       - 'railway.toml'
       - 'railway.json'
+      - 'lightsail/**'
   workflow_dispatch:
 
 env:

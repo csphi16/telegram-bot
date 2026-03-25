@@ -199,7 +199,7 @@ Resources:
   ECRRepository:
     Type: AWS::ECR::Repository
     Properties:
-      RepositoryName: paybot
+      RepositoryName: !Ref EnvironmentName
       ImageScanningConfiguration:
         ScanOnPush: true
       LifecyclePolicy:
@@ -218,7 +218,7 @@ Resources:
           }
       Tags:
         - Key: Name
-          Value: paybot
+          Value: !Ref EnvironmentName
 
   # ── CloudWatch Logs ─────────────────────────────────────────────────────────
 
@@ -398,7 +398,7 @@ Outputs:
 
   ECRRepositoryURI:
     Description: ECR repository URI (used by the GitHub Actions deploy workflow)
-    Value: !Sub "${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/paybot"
+    Value: !GetAtt ECRRepository.RepositoryUri
     Export:
       Name: !Sub "${EnvironmentName}-ecr-uri"
 
