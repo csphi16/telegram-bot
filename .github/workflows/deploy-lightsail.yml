@@ -8,6 +8,7 @@ on:
       - '**.md'
       - 'railway.toml'
       - 'railway.json'
+      - 'aws/**'
   workflow_dispatch:
 
 env:
